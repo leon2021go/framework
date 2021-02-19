@@ -53,10 +53,7 @@ public class RpcDecoder extends ByteToMessageDecoder {
         }
         Request request = (Request)HessianSerialization.deSerialize(payload, Request.class);
 
-        Message message = new Message();
-        message.setHeader(header);
-        message.setRequest(request);
-
+        Message<Request> message = new Message<>(header, request);
         list.add(message);
     }
 }
